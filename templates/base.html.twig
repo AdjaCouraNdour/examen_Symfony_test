@@ -1,17 +1,67 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" href="{{ asset('build/app.css') }}">
 
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+    {% block importmap %}
+        {{ importmap('app') }}
+    {% endblock %}
+
+    <title>Gestion Ecole</title>
+</head>
+<body class="bg-gray-100 flex flex-col">
+    <div data-controller="hello"></div>
+
+    <div class="flex w-full">
+        <!-- Menu latéral -->
+        <aside class="w-64 bg-burgundy text-white h-screen p-4">
+            <h2 class="text-xl font-bold mb-4">GESTION ECOLE</h2>
+            <h2 class="text-xl font-bold mb-4">- - - - - </h2>
+
+            <ul>
+                <li class="mb-6 mt-12">
+                    <a href="{{ path('cours.index') }}" class="text-white hover:text-white flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2 4 4 6-6 4 4V6H3v6z" />
+                        </svg>
+                        Cours
+                    </a>
+                </li>
+                <li class="mb-6">
+                    <a href="" class="text-white hover:text-white flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18m9-9H3" />
+                        </svg>
+                        Niveaux
+                    </a>
+                </li>
+                <li class="mb-6">
+                    <a href="" class="text-white hover:text-white flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18m9-9H3" />
+                        </svg>
+                        Classes
+                    </a>
+                </li>
+                <li class="mb-6">
+                    <a href="" class="text-white hover:text-white flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18m9-9H3" />
+                        </svg>
+                        Professeurs
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Contenu principal -->
+        <main class="flex-1 p-6">
+            {% block body %}
+            <!-- Contenu dynamique -->
+            {% endblock %}
+        </main>
+    </div>
+</body>
 </html>

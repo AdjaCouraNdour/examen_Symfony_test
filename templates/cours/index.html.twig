@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Cours{% endblock %}
+
+{% block body %}
+    <h1>Liste des Cours</h1>
+
+    <a href="{{ path('cours.store') }}">Ajouter un Cours</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Professeur</th>
+                <th>Module</th>
+                <th>Niveau</th>
+                <th>Classes</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cours in cours %}
+                <tr>
+                    <td>{{ cours.professeur.nom }}</td>
+                    <td>{{ cours.module.nom }}</td>
+                    <td>{{ cours.niveau.nom }}</td>
+                    <td>
+                        {% for classe in cours.classes %}
+                            {{ classe.nom }}{% if not loop.last %}, {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>
+                        <a href="{{ path('cours.show', { 'id': cours.id }) }}">Voir</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr><td colspan="5">Aucun cours disponible</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
