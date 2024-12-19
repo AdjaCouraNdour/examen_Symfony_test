@@ -17,13 +17,13 @@ class dataFixtures extends Fixture
         // Création de niveaux
         for ($i = 1; $i <= 3; $i++) {
             $niveau = new Niveau();
-            $niveau->setLibelle("Niveau $i");
+            $niveau->setNom("Niveau $i");
             $manager->persist($niveau);
 
             // Création des classes pour chaque niveau
             for ($j = 1; $j <= 3; $j++) {
                 $classe = new Classe();
-                $classe->setLibelle("Classe $j de Niveau $i");
+                $classe->setNom("Classe $j de Niveau $i");
                 $manager->persist($classe);
 
                 // Création des professeurs pour chaque niveau et classe
@@ -35,7 +35,7 @@ class dataFixtures extends Fixture
 
                     // Création des modules
                     $module = new Module();
-                    $module->setLibelle("Module $k");
+                    $module->setNom("Module $k");
                     $manager->persist($module);
 
                     // Création des cours
