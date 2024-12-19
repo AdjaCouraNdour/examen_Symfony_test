@@ -23,7 +23,6 @@ class CoursController extends AbstractController
         $count = 0;
         $totalPages = 0;
 
-        // Pagination pour afficher les cours
         $cours = $coursRepository->findBy([], [], $limit, ($page - 1) * $limit);
         $count = count($cours);
         $totalPages = ceil($count / $limit);
@@ -43,7 +42,6 @@ class CoursController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Récupération du professeur et du niveau
             $professeur = $form->get('professeur')->getData();
             $niveau = $form->get('niveau')->getData();
 
@@ -84,7 +82,6 @@ class CoursController extends AbstractController
             throw $this->createNotFoundException('Niveau non trouvé');
         }
 
-        // Filtrer les cours par niveau
         $cours = $coursRepository->findBy(['niveau' => $niveau]);
 
         return $this->render('cours/index.html.twig', [
@@ -101,7 +98,6 @@ class CoursController extends AbstractController
             throw $this->createNotFoundException('Professeur non trouvé');
         }
 
-        // Filtrer les cours par professeur
         $cours = $coursRepository->findBy(['professeur' => $professeur]);
 
         return $this->render('cours/index.html.twig', [
