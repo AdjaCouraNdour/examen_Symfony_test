@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-#[ORM\Table(name: "user")]
+#[ORM\Table(name: "userr")]
 #[ORM\InheritanceType("SINGLE_TABLE")]
 #[ORM\DiscriminatorColumn(name: "user_type", type: "string")]
 #[ORM\DiscriminatorMap(["user" => "User", "professeur" => "Professeur","administrateur" => "Administrateur","etudiant" => "Etudiant"])]
